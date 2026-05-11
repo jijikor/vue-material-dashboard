@@ -58,30 +58,3 @@ export default {
   },
 };
 </script>
-
-<style lang="scss" scoped>
-::v-deep .md-table-head-container {
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-}
-
-::v-deep .md-table-head-label {
-  display: flex;
-  align-items: center;
-  width: 100%;
-}
-
-::v-deep .md-table-sortable-icon {
-  position: static !important;
-  margin-left: 8px;
-  color: #ff9800 !important; // Couleur orange (brand-warning)
-  fill: #ff9800 !important;
-}
-
-::v-deep .md-table-head.md-sortable:hover .md-table-sortable-icon,
-::v-deep .md-table-head.md-sortable.md-sorted .md-table-sortable-icon {
-  opacity: 1;
-  color: #ff9800 !important;
-}
-</style>

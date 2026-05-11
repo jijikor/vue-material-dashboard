@@ -63,3 +63,35 @@
     border-top-color: rgba(0,0,0,.06) !important;
   }
 }
+
+// Custom styles for sorting icons
+.md-table {
+  .md-table-head.md-sortable {
+    .md-table-sortable-icon {
+      color: #ff9800 !important;
+      fill: #ff9800 !important;
+      opacity: 1 !important;
+      margin-left: 8px !important;
+      position: static !important;
+    }
+
+    &:hover,
+    &.md-sorted {
+      .md-table-sortable-icon {
+        color: #ff9800 !important;
+        fill: #ff9800 !important;
+      }
+    }
+  }
+
+  // Ensure the container is a flexbox to put the icon at the right
+  .md-table-head-container {
+    display: flex !important;
+    align-items: center !important;
+  }
+
+  .md-table-head-label {
+    display: flex !important;
+    align-items: center !important;
+  }
+}
