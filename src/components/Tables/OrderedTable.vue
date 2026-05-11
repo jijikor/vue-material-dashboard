@@ -1,12 +1,12 @@
 <template>
   <div>
-    <md-table v-model="users" :table-header-color="tableHeaderColor" @md-sort="customSort">
+    <md-table v-model="users" :table-header-color="tableHeaderColor" md-sort="name" md-sort-order="asc" md-card>
       <md-table-row slot="md-table-row" slot-scope="{ item }">
-        <md-table-cell md-label="ID">{{ item.id }}</md-table-cell>
+        <md-table-cell md-label="ID" md-sort-by="id" md-numeric>{{ item.id }}</md-table-cell>
         <md-table-cell md-label="Name" md-sort-by="name">{{ item.name }}</md-table-cell>
-        <md-table-cell md-label="Salary">{{ item.salary }}</md-table-cell>
-        <md-table-cell md-label="Country">{{ item.country }}</md-table-cell>
-        <md-table-cell md-label="City">{{ item.city }}</md-table-cell>
+        <md-table-cell md-label="Salary" md-sort-by="salary">{{ item.salary }}</md-table-cell>
+        <md-table-cell md-label="Country" md-sort-by="country">{{ item.country }}</md-table-cell>
+        <md-table-cell md-label="City" md-sort-by="city">{{ item.city }}</md-table-cell>
       </md-table-row>
     </md-table>
   </div>
@@ -55,19 +55,6 @@ export default {
         },
       ],
     };
-  },
-  methods: {
-    customSort(value) {
-      this.users.sort((a, b) => {
-        const sortBy = value.name;
-
-        if (value.type === "asc") {
-          return a[sortBy].localeCompare(b[sortBy]);
-        }
-
-        return b[sortBy].localeCompare(a[sortBy]);
-      });
-    },
   },
 };
 </script>
