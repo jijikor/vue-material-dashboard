@@ -1,9 +1,9 @@
 <template>
   <div>
-    <md-table v-model="users" :table-header-color="tableHeaderColor">
+    <md-table v-model="users" :table-header-color="tableHeaderColor" @md-sort="customSort">
       <md-table-row slot="md-table-row" slot-scope="{ item }">
         <md-table-cell md-label="ID">{{ item.id }}</md-table-cell>
-        <md-table-cell md-label="Name">{{ item.name }}</md-table-cell>
+        <md-table-cell md-label="Name" md-sort-by="name">{{ item.name }}</md-table-cell>
         <md-table-cell md-label="Salary">{{ item.salary }}</md-table-cell>
         <md-table-cell md-label="Country">{{ item.country }}</md-table-cell>
         <md-table-cell md-label="City">{{ item.city }}</md-table-cell>
@@ -55,6 +55,19 @@ export default {
         },
       ],
     };
+  },
+  methods: {
+    customSort(value) {
+      this.users.sort((a, b) => {
+        const sortBy = value.name;
+
+        if (value.type === "asc") {
+          return a[sortBy].localeCompare(b[sortBy]);
+        }
+
+        return b[sortBy].localeCompare(a[sortBy]);
+      });
+    },
   },
 };
 </script>
