@@ -1,0 +1,108 @@
+[1mdiff --git a/src/components/Tables/SalaryTable.vue b/src/components/Tables/SalaryTable.vue[m
+[1mnew file mode 100644[m
+[1mindex 0000000..10b218a[m
+[1m--- /dev/null[m
+[1m+++ b/src/components/Tables/SalaryTable.vue[m
+[36m@@ -0,0 +1,44 @@[m
+[32m+[m[32m<template>[m
+[32m+[m[32m  <div>[m
+[32m+[m[32m    <md-table v-model="employees" :table-header-color="tableHeaderColor" md-sort="name" md-sort-order="asc" md-card>[m
+[32m+[m[32m      <md-table-row slot="md-table-row" slot-scope="{ item }">[m
+[32m+[m[32m        <md-table-cell md-label="Nom" md-sort-by="name">{{ item.name }}</md-table-cell>[m
+[32m+[m[32m        <md-table-cell md-label="Salaire" md-sort-by="salary">{{ item.salary }}</md-table-cell>[m
+[32m+[m[32m      </md-table-row>[m
+[32m+[m[32m    </md-table>[m
+[32m+[m[32m  </div>[m
+[32m+[m[32m</template>[m
+[32m+[m
+[32m+[m[32m<script>[m
+[32m+[m[32mexport default {[m
+[32m+[m[32m  name: "salary-table",[m
+[32m+[m[32m  props: {[m
+[32m+[m[32m    tableHeaderColor: {[m
+[32m+[m[32m      type: String,[m
+[32m+[m[32m      default: "",[m
+[32m+[m[32m    },[m
+[32m+[m[32m  },[m
+[32m+[m[32m  data() {[m
+[32m+[m[32m    return {[m
+[32m+[m[32m      employees: [[m
+[32m+[m[32m        {[m
+[32m+[m[32m          name: "Dakota Rice",[m
+[32m+[m[32m          salary: "$36,738",[m
+[32m+[m[32m        },[m
+[32m+[m[32m        {[m
+[32m+[m[32m          name: "Minerva Hooper",[m
+[32m+[m[32m          salary: "$23,738",[m
+[32m+[m[32m        },[m
+[32m+[m[32m        {[m
+[32m+[m[32m          name: "Sage Rodriguez",[m
+[32m+[m[32m          salary: "$56,142",[m
+[32m+[m[32m        },[m
+[32m+[m[32m        {[m
+[32m+[m[32m          name: "Philip Chaney",[m
+[32m+[m[32m          salary: "$38,735",[m
+[32m+[m[32m        },[m
+[32m+[m[32m      ],[m
+[32m+[m[32m    };[m
+[32m+[m[32m  },[m
+[32m+[m[32m};[m
+[32m+[m[32m</script>[m
+[1mdiff --git a/src/components/index.js b/src/components/index.js[m
+[1mindex d40bcb2..1222e3b 100644[m
+[1m--- a/src/components/index.js[m
+[1m+++ b/src/components/index.js[m
+[36m@@ -7,6 +7,7 @@[m [mimport StatsCard from "./Cards/StatsCard.vue";[m
+ import NavTabsTable from "./Tables/NavTabsTable.vue";[m
+ import OrderedTable from "./Tables/OrderedTable.vue";[m
+ import SimpleTable from "./Tables/SimpleTable.vue";[m
+[32m+[m[32mimport SalaryTable from "./Tables/SalaryTable.vue";[m
+ [m
+ export {[m
+   ChartCard,[m
+[36m@@ -15,4 +16,5 @@[m [mexport {[m
+   NavTabsTable,[m
+   OrderedTable,[m
+   SimpleTable,[m
+[32m+[m[32m  SalaryTable,[m
+ };[m
+[1mdiff --git a/src/pages/Dashboard.vue b/src/pages/Dashboard.vue[m
+[1mindex 8753e32..8f681cb 100644[m
+[1m--- a/src/pages/Dashboard.vue[m
+[1m+++ b/src/pages/Dashboard.vue[m
+[36m@@ -173,6 +173,19 @@[m
+           </md-card-content>[m
+         </md-card>[m
+       </div>[m
+[32m+[m[32m      <div[m
+[32m+[m[32m        class="md-layout-item md-medium-size-100 md-xsmall-size-100 md-size-50"[m
+[32m+[m[32m      >[m
+[32m+[m[32m        <md-card>[m
+[32m+[m[32m          <md-card-header data-background-color="green">[m
+[32m+[m[32m            <h4 class="title">Salaire</h4>[m
+[32m+[m[32m            <p class="category">Liste des salaires des employés</p>[m
+[32m+[m[32m          </md-card-header>[m
+[32m+[m[32m          <md-card-content>[m
+[32m+[m[32m            <salary-table table-header-color="green"></salary-table>[m
+[32m+[m[32m          </md-card-content>[m
+[32m+[m[32m        </md-card>[m
+[32m+[m[32m      </div>[m
+       <div[m
+         class="md-layout-item md-medium-size-100 md-xsmall-size-100 md-size-50"[m
+       >[m
+[36m@@ -206,6 +219,7 @@[m [mimport {[m
+   NavTabsCard,[m
+   NavTabsTable,[m
+   OrderedTable,[m
+[32m+[m[32m  SalaryTable,[m
+ } from "@/components";[m
+ [m
+ export default {[m
+[36m@@ -215,6 +229,7 @@[m [mexport default {[m
+     NavTabsCard,[m
+     NavTabsTable,[m
+     OrderedTable,[m
+[32m+[m[32m    SalaryTable,[m
+   },[m
+   data() {[m
+     return {[m
